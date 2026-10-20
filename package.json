@@ -1,0 +1,13 @@
+{
+  "name": "update-relay",
+  "private": true,
+  "type": "module",
+  "description": "Fictional demo service: routes endpoint-agent update downloads to an origin pool per region.",
+  "scripts": {
+    "test": "node --test",
+    "plan": "node scripts/plan.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

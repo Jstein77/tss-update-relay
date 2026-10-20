@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Run tests
+        run: npm test
+      - name: Deploy to staging
+        run: |
+          node scripts/plan.js
+          echo "Published config ${GITHUB_SHA::7} to update-relay staging. Simulated deploy: this is a fictional demo service."
+
+  production:
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Run tests
+        run: npm test
+      - name: Deploy to production
+        run: |
+          node scripts/plan.js
+          echo "Published config ${GITHUB_SHA::7} to update-relay production. Simulated deploy: this is a fictional demo service."

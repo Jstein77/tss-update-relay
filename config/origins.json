@@ -1,0 +1,14 @@
+{
+  "origin-pool-a": {
+    "host": "origin-pool-a.update-relay.example",
+    "status": "active"
+  },
+  "origin-pool-b": {
+    "host": "origin-pool-b.update-relay.example",
+    "status": "active"
+  },
+  "origin-pool-c": {
+    "host": "origin-pool-c.update-relay.example",
+    "status": "active"
+  }
+}
