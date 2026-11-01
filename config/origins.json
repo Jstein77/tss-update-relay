@@ -1,7 +1,10 @@
 {
   "origin-pool-a": {
     "host": "origin-pool-a.update-relay.example",
-    "status": "active"
+    "status": "retired",
+    "retiredOn": "2026-11-01",
+    "lastPackage": "26.300",
+    "note": "Decommissioned. Package sync stopped after 26.300."
   },
   "origin-pool-b": {
     "host": "origin-pool-b.update-relay.example",
