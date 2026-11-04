@@ -30,8 +30,11 @@ export function packageUrl(region, packageName, config = loadConfig()) {
 export function validateConfig(config = loadConfig()) {
   const problems = [];
   for (const [region, entry] of Object.entries(config.regions)) {
-    if (!config.origins[entry.origin]) {
+    const origin = config.origins[entry.origin];
+    if (!origin) {
       problems.push(`${region}: unknown origin "${entry.origin}"`);
+    } else if (origin.status === "retired") {
+      problems.push(`${region}: origin "${entry.origin}" is retired`);
     }
   }
   for (const [name, origin] of Object.entries(config.origins)) {
