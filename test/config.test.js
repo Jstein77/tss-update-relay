@@ -28,3 +28,11 @@ test("unknown origins are rejected", () => {
   const config = { regions: { "xx-test-1": { origin: "origin-pool-z" } }, origins: {} };
   assert.deepEqual(validateConfig(config), ['xx-test-1: unknown origin "origin-pool-z"']);
 });
+
+test("regions never route to a retired origin", () => {
+  const config = {
+    regions: { "xx-test-1": { origin: "origin-pool-r" } },
+    origins: { "origin-pool-r": { host: "origin-pool-r.update-relay.example", status: "retired" } },
+  };
+  assert.deepEqual(validateConfig(config), ['xx-test-1: origin "origin-pool-r" is retired']);
+});

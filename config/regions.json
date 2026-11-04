@@ -1,5 +1,5 @@
 {
-  "us-east-1": { "origin": "origin-pool-a" },
+  "us-east-1": { "origin": "origin-pool-b" },
   "eu-west-1": { "origin": "origin-pool-b" },
   "ap-southeast-1": { "origin": "origin-pool-c" }
 }
